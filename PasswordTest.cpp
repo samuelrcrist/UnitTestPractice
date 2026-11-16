@@ -34,3 +34,21 @@ TEST(PasswordTest, leading_characters_are_case_sensitive)
 	int actual = my_password.count_leading_characters("ZZzz");
 	ASSERT_EQ(2, actual);
 }
+
+TEST(PasswordTest, mixed_case_password) {
+	Password my_password;
+	bool actual = my_password.has_mixed_case("AaAaAa");
+	ASSERT_TRUE(actual);
+}
+
+TEST(PasswordTest, lowercase_only_password) {
+	Password my_password;
+	bool actual = my_password.has_mixed_case("aaaaaa");
+	ASSERT_FALSE(actual);
+}
+
+TEST(PasswordTest, uppercase_only_password) {
+	Password my_password;
+	bool actual = my_password.has_mixed_case("AAAAAAA");
+	ASSERT_FALSE(actual);
+}
