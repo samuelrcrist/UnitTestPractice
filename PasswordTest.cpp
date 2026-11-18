@@ -52,3 +52,13 @@ TEST(PasswordTest, uppercase_only_password) {
 	bool actual = my_password.has_mixed_case("AAAAAAA");
 	ASSERT_FALSE(actual);
 }
+
+TEST(PasswordTest, empty_password) {
+    Password password;
+    ASSERT_FALSE(password.has_mixed_case(""));
+}
+
+TEST(PasswordTest, digits_and_symbols_only) {
+    Password password;
+    ASSERT_FALSE(password.has_mixed_case("123!"));
+}
